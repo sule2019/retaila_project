@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Retail Analytics</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('.dataframe').DataTable();
+        });
+    </script>
+
+
+
+</head>
+
+<body>
+
+    <p>Data Description</p>
+    {% for table in data_description %} {{ table|safe }} {% endfor %}
+
+    <p>Data Sample</p>
+    {% for table in data_sample %} {{ table|safe }} {% endfor %}
+
+    <p>Data head</p>
+    {% for table in data_head %} {{ table|safe }} {% endfor %}
+
+    <p>Data tail</p>
+    {% for table in data_tail %} {{ table|safe }} {% endfor %}
+
+    <p>Recent Transactions</p>
+    <p>Enter number of transactions</p>
+
+    <form action="{{url_for('home')}}" method="post">
+        <input type="number" name="recent">
+        <br>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    {% for table in recent_transactions %} {{ table|safe }} {% endfor %}
+
+
+
+    <p>Historical Transactions</p>
+    <p>Enter number of transactions</p>
+
+    <form action="{{url_for('home')}}" method="post">
+        <input type="number" name="historical">
+        <br>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    {% for table in historical_transactions %} {{ table|safe }} {% endfor %}
+
+
+
+
+    <!-- <p>Recent Transactions</p>
+    {% for table in historical_transactions %} {{ table|safe }} {% endfor %} -->
+
+
+
+</body>
+
+</html>
