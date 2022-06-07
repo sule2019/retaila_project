@@ -18,18 +18,28 @@ def home():
     
     if request.method == 'POST':
         #Recent Transactions
-        recent = request.form['recent']
+        if request.form['recent']:
+            recent = request.form['recent']
+        else:
+            recent = 20
+        
+            
         global recent_transactions
         recent_transactions = data.head(int(recent))
         
         #Historical Transactions
         historical = request.form['historical']
+        if request.form['historical'] == None:
+            historical = request.form['historical']
+        else:
+            historical = 20
+            
         global historical_transactions
         historical_transactions = data.tail(int(historical))
         
     else:
-        recent_transactions = data.head(13)
-        historical_transactions = data.tail(13)
+        recent_transactions = data.head(20)
+        historical_transactions = data.tail(20)
         
  
         

@@ -36,37 +36,41 @@
     <p>Data tail</p>
     {% for table in data_tail %} {{ table|safe }} {% endfor %}
 
-    <p>Recent Transactions</p>
-    <p>Enter number of transactions</p>
+
 
     <form action="{{url_for('home')}}" method="post">
+        <p>Recent Transactions</p>
+        <p>Enter number of transactions</p>
         <input type="number" name="recent">
         <br>
         <br>
         <input type="submit" value="Submit">
+        <br>
+        <br> {% for table in recent_transactions %} {{ table|safe }} {% endfor %}
+
     </form>
 
-    {% for table in recent_transactions %} {{ table|safe }} {% endfor %}
-
-
-
-    <p>Historical Transactions</p>
-    <p>Enter number of transactions</p>
-
     <form action="{{url_for('home')}}" method="post">
+        <p>Historical Transactions</p>
+        <p>Enter number of transactions</p>
         <input type="number" name="historical">
         <br>
         <br>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit"> {% for table in historical_transactions %} {{ table|safe }} {% endfor %}
     </form>
 
-    {% for table in historical_transactions %} {{ table|safe }} {% endfor %}
 
 
 
 
-    <!-- <p>Recent Transactions</p>
-    {% for table in historical_transactions %} {{ table|safe }} {% endfor %} -->
+
+
+
+
+
+
+
+
 
 
 
