@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import StrMethodFormatter
 import pickle
 
-data = pd.read_csv('uk_data.csv', header=1,low_memory=False)
+data = pd.read_csv('uk_data.csv', header=0,low_memory=False)
 
 data_2 = data.tail(35)
 

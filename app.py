@@ -6,46 +6,33 @@ import numpy as np
 import pandas as pd
 from model import *
 from data_exploration import *
+from sales import *
+from purchases import *
 
 app = Flask(__name__)
 
-recent = None
-historical = None
 
-@app.route("/")
+#recent = None
+#historical = None
+
+@app.route("/",)
 @app.route("/home", methods=['GET', 'POST'])
 def home():
-    
-    if request.method == 'POST':
-        #Recent Transactions
-        if request.form['recent']:
-            recent = request.form['recent']
-        else:
-            recent = 20
         
-            
+    if request.method == 'POST' and request.form.get('recent'):
+        recent = request.form['recent']
         global recent_transactions
         recent_transactions = data.head(int(recent))
-        
-        #Historical Transactions
-        historical = request.form['historical']
-        if request.form['historical'] == None:
-            historical = request.form['historical']
-        else:
-            historical = 20
-            
-        global historical_transactions
-        historical_transactions = data.tail(int(historical))
-        
     else:
         recent_transactions = data.head(20)
-        historical_transactions = data.tail(20)
+    
+    if request.method == 'POST' and request.form.get('historical'):
+        historical = request.form['historical']
+        global historical_transactions
+        historical_transactions = data.tail(int(historical))
+    else:   
+        historical_transactions = data.tail(20)   
         
- 
-        
-    
-    
-    
     return render_template('home.html', 
                            data_description=[data_description.to_html(classes='data', header='true')], 
                            data_sample=[data_sample.to_html(classes='data', header='true')], data_head=[data_head.to_html(classes='data', header='true')],data_tail=[data_tail.to_html(classes='data', header='true')],
@@ -55,6 +42,18 @@ def home():
                            
                            )
 
+@app.route('/sales')
+def sales():
+    
+    
+    
+    return render_template('sales.html', sales_data = [totalSales().to_html(classes='data', header='true')])
+    
+@app.route('/purchases')
+def purchases():
+    return render_template('purchases.html', purchases_data = [purchases_data.to_html(classes='data', header='true')])
+
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
