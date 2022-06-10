@@ -31,8 +31,31 @@
 </head>
 
 <body>
+    <p>SALES DATA</p>
+    <br> {% for table in sales_data %} {{ table|safe }} {% endfor %}
 
-    {% for table in sales_data %} {{ table|safe }} {% endfor %}
+    <br>
+    <p>TOTAL SALES ALL</p>
+    {{total_sales_all}}
+    <br>
+    <br>
+    <p>TOTAL SALES EACH TRANSACTION</p>
+    {% for table in total_sales_each_transaction %} {{ table|safe }} {% endfor %}
+
+    <br>
+    <P>TOTAL SALES FOR EACH LOCATION</P>
+    {% for table in total_sales_each_location %} {{ table|safe }} {% endfor %}
+
+    <br>
+    <P>TOTAL SALES FOR EACH DAY</P>
+    {% for table in each_day_sales%} {{ table|safe }} {% endfor %}
+
+
+
+
+
+
+
 </body>
 
 </html>
