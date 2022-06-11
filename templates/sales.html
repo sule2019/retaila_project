@@ -42,13 +42,21 @@
     <p>TOTAL SALES EACH TRANSACTION</p>
     {% for table in total_sales_each_transaction %} {{ table|safe }} {% endfor %}
 
+
+    <br>
+    <p>AVERAGE TRANSACTION SALES</p>
+    {{average_transaction_sales}}
+    <br>
+
     <br>
     <P>TOTAL SALES FOR EACH LOCATION</P>
     {% for table in total_sales_each_location %} {{ table|safe }} {% endfor %}
 
     <br>
     <P>TOTAL SALES FOR EACH DAY</P>
-    {% for table in each_day_sales%} {{ table|safe }} {% endfor %}
+    {% for table in each_day_sales%} {{ table|safe }} {% endfor %} <br>
+    <P>TOTAL SALES FOR EACH HOUR</P>
+    {% for table in each_hour_sales%} {{ table|safe }} {% endfor %}
 
 
 

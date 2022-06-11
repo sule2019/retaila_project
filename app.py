@@ -47,7 +47,7 @@ def sales():
     
     
     
-    return render_template('sales.html', sales_data = [ProcessSalesData().to_html(classes='data', header='true')], total_sales_all = total_sales_all, total_sales_each_transaction = [total_sales_each_transaction.to_html(classes='data', header='true')], total_sales_each_location = [total_sales_each_location.to_html(classes='data', header='true')], each_day_sales = [each_day_sales.to_html(classes='data', header='true')])
+    return render_template('sales.html', sales_data = [ProcessSalesData().to_html(classes='data', header='true')], total_sales_all = total_sales_all, total_sales_each_transaction = [total_sales_each_transaction.to_html(classes='data', header='true')], total_sales_each_location = [total_sales_each_location.to_html(classes='data', header='true')], each_day_sales = [each_day_sales.to_html(classes='data', header='true')], each_hour_sales = [each_hour_sales.to_html(classes='data', header='true')], average_transaction_sales = average_transaction_sales)
     
     
     
